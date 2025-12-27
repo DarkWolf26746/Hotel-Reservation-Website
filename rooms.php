@@ -10,10 +10,15 @@ $result = mysqli_query($conn, "SELECT * FROM products");
 <div class="rooms">
 <?php while($row = mysqli_fetch_assoc($result)): ?>
     <div class="room">
-        <img src="images/<?= $row['product_img1']; ?>">
+        <!-- Room Image -->
+        <img src="/hotel1/images/<?= $row['product_img1']; ?>" alt="<?= $row['product_title']; ?>">
+
+        <!-- Room Info -->
         <h3><?= $row['product_title']; ?></h3>
         <p><?= $row['product_desc']; ?></p>
         <p><b>Rs. <?= $row['product_price']; ?>/night</b></p>
+
+        <!-- Booking Link -->
         <a href="room.php?id=<?= $row['product_id']; ?>">Book Now</a>
     </div>
 <?php endwhile; ?>

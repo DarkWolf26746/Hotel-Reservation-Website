@@ -1,116 +1,635 @@
+/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* ================= GLOBAL BACKGROUND ================= */
 body {
-    background: #f4f4f4;
+    min-height: 100vh;
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f4fbff 30%,
+        #dff3ff 60%,
+        #b7e9ff 100%
+    );
+    color: #111;
 }
 
-/* Navbar */
+/* ================= CRYSTAL OCEAN NAVBAR ================= */
 nav {
-    background: #111;
-    padding: 15px;
-}
-nav a {
-    color: white;
-    margin-right: 20px;
-    text-decoration: none;
-    font-weight: bold;
-}
-nav a:hover {
-    color: gold;
-}
-
-/* Hero */
-.hero {
-    background: url("../images/suite.jpg") center/cover;
-    height: 80vh;
-    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 18px 60px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    background: linear-gradient(
+        120deg,
+        rgba(0, 70, 110, 0.55),
+        rgba(0, 130, 200, 0.45),
+        rgba(0, 200, 230, 0.35)
+    );
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: #eaffff;
+}
+
+.nav-links a {
+    color: #eafcff;
+    margin-left: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.35s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7fffd4, #00eaff);
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(127, 255, 212, 0.7);
+}
+
+/* ================= HERO ================= */
+.hero {
+    height: 90vh;
+    background: url("../images/suite.jpg") center/cover no-repeat;
+    position: relative;
+}
+
+.hero-overlay {
+    background: rgba(0,0,0,0.6);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    color: white;
     text-align: center;
 }
-.hero h1 {
-    font-size: 50px;
+
+.hero-overlay h1 {
+    font-size: 60px;
+    margin-bottom: 15px;
 }
-.hero p {
-    margin: 20px 0;
-    font-size: 20px;
+
+.hero-overlay p {
+    font-size: 22px;
+    margin-bottom: 30px;
 }
-.hero a {
-    padding: 12px 25px;
+
+.btn-primary {
+    padding: 15px 35px;
     background: gold;
     color: black;
-    text-decoration: none;
     font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
 }
 
-/* Container */
+/* ================= CONTAINER ================= */
 .container {
-    padding: 40px;
+    padding: 60px;
 }
 
-/* Rooms */
+/* ================= ROOMS ================= */
 .rooms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.room {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(6px);
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.room:hover {
+    transform: translateY(-8px);
+}
+
+.room img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.room h3 {
+    margin: 15px 0 8px;
+}
+
+.room p {
+    color: #555;
+}
+
+.room a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+/* ================= ABOUT HOME ================= */
+.about-home {
+    display: flex;
+    gap: 50px;
+    padding: 80px;
+    align-items: center;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(6px);
+}
+
+.about-home img {
+    width: 100%;
+    border-radius: 25px;
+}
+
+.about-text h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* ================= GALLERY ================= */
+.home-gallery {
+    padding: 70px;
+    background: linear-gradient(
+        180deg,
+        #f8fdff,
+        #e6f6ff
+    );
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.07);
+}
+
+/* ================= FEATURES ================= */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 70px;
+    background: linear-gradient(
+        180deg,
+        #0a1f2c,
+        #0d2f44
+    );
+    color: white;
+    text-align: center;
+}
+
+.feature h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* ================= FORMS ================= */
+form {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(6px);
+    padding: 35px;
+    max-width: 420px;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+form input {
+    width: 100%;
+    padding: 12px 18px;
+    margin-bottom: 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #111, #333);
+    color: white;
+    border: none;
+    border-radius: 25px;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: linear-gradient(
+        180deg,
+        #081a24,
+        #000c12
+    );
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+
+/* FORM CONTAINER CENTERING */
+.form-container {
+    min-height: calc(100vh - 100px); /* full viewport minus header/footer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 15px;
+}
+
+/* LOGIN/REGISTER FORM */
+form {
+    background: rgba(238, 242, 245, 0.95); /* soft grey glass */
+    padding: 35px 30px;
+    border-radius: 18px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.35);
+    text-align: center;
+}
+
+form h2 {
+    color: #063d5f;
+    margin-bottom: 20px;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #0aa4d8, #0077b6);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.error-msg {
+    color: #d90429;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.form-footer {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.form-footer a {
+    color: #0aa4d8;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* MOTTO ABOVE LOGIN CARD */
+form .motto {
+    font-size: 16px;
+    color: #0077b6; /* ocean blue accent */
+    font-style: italic;
+    margin-bottom: 20px;
+    display: block;
+}
+
+
+/* ================= MAIN CONTAINER ================= */
+.container {
+    max-width: 1140px; 
+    margin: 0 auto;
+    padding: 40px 15px;
+}
+
+/* ================= ROOMS GRID ================= */
+.rooms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* ================= ROOM CARD – CRYSTAL LIQUID ================= */
+.room {
+    background: rgba(255, 255, 255, 0.25); /* glass effect */
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    backdrop-filter: blur(10px); /* glass blur */
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 25px rgba(0, 60, 100, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 60, 100, 0.25);
+}
+
+.room img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.room h3 {
+    margin: 12px 0 6px;
+    color: #063d5f;
+}
+
+.room p {
+    color: #555;
+    font-size: 14px;
+}
+
+.room a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #0aa4d8, #0077b6);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+
+
+/* ================= FOOTER ================= */
+footer {
+    background: linear-gradient(
+        180deg,
+        #081a24,
+        #000c12
+    );
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+}
+
+.footer-container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* About Us Section */
+.footer-about {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+}
+
+.footer-about h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #00eaff; /* Ocean accent */
+}
+
+.footer-about p {
+    font-size: 14px;
+    color: #dfefff;
+    line-height: 1.6;
+}
+
+.nav-profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+    vertical-align: middle;
+    border: 2px solid #0aa4d8;
+    transition: transform 0.3s ease;
+}
+
+.nav-profile-pic:hover {
+    transform: scale(1.1);
+}
+
+
+.profile-pic-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid #0aa4d8;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* ================= PROFILE PAGE ================= */
+.profile-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 50px 15px;
+}
+
+/* Profile Card */
+.profile-card {
+    background: rgba(255, 255, 255, 0.25); /* glass effect */
+    backdrop-filter: blur(10px);
+    padding: 35px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0, 60, 100, 0.15);
+    max-width: 400px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 60, 100, 0.25);
+}
+
+.profile-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid rgba(255,255,255,0.4);
+}
+
+.profile-card h3 {
+    margin-bottom: 10px;
+    color: #063d5f;
+}
+
+.profile-card p {
+    color: #111;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+/* User Bookings Section */
+.user-bookings-section {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.user-bookings-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #063d5f;
+}
+
+/* Booking Cards Grid */
+.booking-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
-.room {
-    background: white;
+
+/* Individual Booking Card */
+.booking-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
     padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,60,100,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.room img {
+
+.booking-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,60,100,0.25);
+}
+
+.booking-card img {
     width: 100%;
-    border-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 12px;
 }
-.room h3 {
-    margin: 15px 0;
+
+.booking-info h4 {
+    margin-bottom: 6px;
+    color: #063d5f;
+    font-weight: 600;
 }
-.room p {
-    color: #555;
+
+.booking-info p {
+    font-size: 14px;
+    color: #111;
+    margin-bottom: 4px;
 }
-.room a {
+
+/* Buttons */
+.delete-btn {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #111;
+    margin-top: 10px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #d90429, #9f1239);
     color: white;
     text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-/* Forms */
-form {
-    background: white;
-    padding: 30px;
-    max-width: 400px;
-    margin: auto;
-    border-radius: 10px;
+.delete-btn:hover {
+    background: linear-gradient(135deg, #9f1239, #d90429);
+    transform: translateY(-3px);
 }
-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-}
-form button {
-    width: 100%;
-    padding: 10px;
-    background: #111;
+
+.print-btn {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #0077b6, #00cfff);
     color: white;
     border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-/* Footer */
-footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 40px;
+.print-btn:hover {
+    opacity: 0.9;
 }
+
+
